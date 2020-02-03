@@ -1,4 +1,4 @@
-# SampleJWTAuthMvcCoreWebAPI
+# Sample Web API using JWT Beaer Token as Authentication
 This app shows how can we have a JWT Bearer Token used for Authentication. By default, the Token expiry is 5 minuutes which can be extended further.
 
 Source: https://www.blinkingcaret.com/2017/09/06/secure-web-api-in-asp-net-core/
