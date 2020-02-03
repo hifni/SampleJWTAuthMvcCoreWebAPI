@@ -15,6 +15,9 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace SampleJWTAuthMvcCoreWebAPI
 {
+    /// <summary>
+    /// https://www.blinkingcaret.com/2017/09/06/secure-web-api-in-asp-net-core/
+    /// </summary>
     public class Startup
     {
         public Startup(IConfiguration configuration)
