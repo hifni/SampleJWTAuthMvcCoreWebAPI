@@ -3,10 +3,10 @@ This app shows how can we have a JWT Bearer Token used for Authentication. By de
 
 Source: https://www.blinkingcaret.com/2017/09/06/secure-web-api-in-asp-net-core/
 
-Nuget Required:
+## Nuget Required:
   `System.IdentityModel.Tokens.Jwt`
 
-Used: 
+## Used: 
   1. ASP.NET Core 2.1
   2. Visual Studio 2017 Pro
   3. GitHub
