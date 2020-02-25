@@ -34,28 +34,6 @@ namespace SampleJWTAuthMvcCoreWebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
-            //services.AddAuthentication(options =>
-            //{
-            //    options.DefaultAuthenticateScheme = "JwtBearer";
-            //    options.DefaultChallengeScheme = "JwtBearer";
-            //})
-            //.AddJwtBearer("JwtBearer", jwtBearerOptions =>
-            //{
-            //    jwtBearerOptions.TokenValidationParameters = new TokenValidationParameters
-            //    {
-            //        ValidateIssuerSigningKey = true,
-            //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Hifni")),
-            //        ValidateIssuer = false,
-            //        ValidIssuer = "Hifni",
-            //        ValidateAudience = false,
-            //        ValidAudience = "All",
-            //        ValidateLifetime = true, //validate the expiration and not before values in the token
-            //        ClockSkew = TimeSpan.FromMinutes(5) //5 minute tolerance for the expiration date
-            //    };
-            //});
-
             //services.AddCors();
             services.AddControllers();
 
@@ -91,20 +69,6 @@ namespace SampleJWTAuthMvcCoreWebAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //if (env.IsDevelopment())
-            //{
-            //    app.UseDeveloperExceptionPage();
-            //}
-            //else
-            //{
-            //    app.UseHsts();
-            //}
-
-            //app.UseHttpsRedirection();
-            //app.UseAuthentication();
-            //app.UseMvc();
-
-            app.UseHttpsRedirection();
             app.UseRouting();
 
             // global cors policy
@@ -114,17 +78,9 @@ namespace SampleJWTAuthMvcCoreWebAPI
             //    .AllowAnyHeader());
 
             app.UseAuthentication();
-            //app.UseAuthorization();
+            app.UseAuthorization();
 
-            //app.UseEndpoints(endpoints => {
-            //    endpoints.MapControllers();
-            //});
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            app.UseEndpoints(endpoints => {
                 endpoints.MapControllers();
             });
         }

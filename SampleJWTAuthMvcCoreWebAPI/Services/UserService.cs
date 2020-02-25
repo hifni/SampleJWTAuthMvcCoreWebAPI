@@ -22,7 +22,13 @@ namespace SampleJWTAuthMvcCoreWebAPI.Services
         // users hardcoded for simplicity, store in a db with hashed passwords in production applications
         private List<User> _users = new List<User>
         {
-            new User { Id = 1, FirstName = "Test", LastName = "User", Username = "test", Password = "test" }
+            new User { Id = 1, FirstName = "Steven", LastName = "Smith", Username = "steves", Password = "098F6BCD4621D373CADE4E832627B4F6" },
+            new User { Id = 1, FirstName = "Graham", LastName = "Smith", Username = "grahams", Password = "098F6BCD4621D373CADE4E832627B4F6" },
+            new User { Id = 1, FirstName = "Ian", LastName = "Smith", Username = "ians", Password = "098F6BCD4621D373CADE4E832627B4F6" },
+            new User { Id = 1, FirstName = "Robin", LastName = "Smith", Username = "robins", Password = "098F6BCD4621D373CADE4E832627B4F6" },
+            new User { Id = 1, FirstName = "Emily", LastName = "Smith", Username = "emilys", Password = "098F6BCD4621D373CADE4E832627B4F6" },
+            new User { Id = 1, FirstName = "Dwayne", LastName = "Smith", Username = "dwaynes", Password = "098F6BCD4621D373CADE4E832627B4F6" },
+            new User { Id = 1, FirstName = "Andrew", LastName = "Smith", Username = "andrews", Password = "098F6BCD4621D373CADE4E832627B4F6" },
         };
 
         private readonly AppSettings _appSettings;
@@ -34,7 +40,7 @@ namespace SampleJWTAuthMvcCoreWebAPI.Services
 
         public User Authenticate(string username, string password)
         {
-            var user = _users.SingleOrDefault(x => x.Username == username && x.Password == password);
+            var user = _users.SingleOrDefault(x => x.Username == username && x.Password == password.CreateMD5());
 
             // return null if user not found
             if (user == null)
@@ -49,7 +55,7 @@ namespace SampleJWTAuthMvcCoreWebAPI.Services
                 {
                     new Claim(ClaimTypes.Name, user.Id.ToString())
                 }),
-                Expires = DateTime.UtcNow.AddDays(7),
+                Expires = DateTime.UtcNow.AddMinutes(5), 
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
