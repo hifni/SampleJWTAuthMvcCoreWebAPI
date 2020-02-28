@@ -25,6 +25,7 @@ namespace SampleJWTAuthMvcCoreWebAPI.Controllers
         [HttpPost("authenticate")]
         public IActionResult Authenticate([FromBody]AuthenticateModel model)
         {
+            //Here it takes only the MD5 Value of password
             var user = _userService.Authenticate(model.Username, model.Password);
 
             if (user == null)

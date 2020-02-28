@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace SampleJWTAuthMvcCoreWebAPI.Controllers
 {
-    [Authorize]
+    
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase

@@ -18,18 +18,17 @@ namespace SampleJWTAuthMvcCoreWebAPI
             CreateHostBuilder(args).Build().Run();
         }
 
+        /// <summary>
+        /// webBuilder.UseStartup<Startup>().UseUrls("http://localhost:55668"); Should only be used in the Development.
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>()
-                        .UseUrls("http://localhost:55668");
+                    webBuilder.UseStartup<Startup>();
+                        //.UseUrls("http://localhost:55668");
                 });
-
-        //public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-        //    WebHost.CreateDefaultBuilder(args)
-        //        .UseStartup<Startup>();
-
-        //http://localhost:55668
     }
 }
