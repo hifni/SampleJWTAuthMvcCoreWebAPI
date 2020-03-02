@@ -40,7 +40,7 @@ namespace SampleJWTAuthMvcCoreWebAPI.Services
 
         public User Authenticate(string username, string password)
         {
-            var user = _users.SingleOrDefault(x => x.Username == username && x.Password == password.CreateMD5());
+            var user = _users.SingleOrDefault(x => x.Username == username && x.Password.CreateMD5() == password);
 
             // return null if user not found
             if (user == null)

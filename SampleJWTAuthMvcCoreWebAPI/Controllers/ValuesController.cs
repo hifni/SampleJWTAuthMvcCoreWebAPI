@@ -2,28 +2,48 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Http.Description;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SampleJWTAuthMvcCoreWebAPI.Models;
 
 namespace SampleJWTAuthMvcCoreWebAPI.Controllers
 {
     
     [Route("api/[controller]")]
     [ApiController]
+    
     public class ValuesController : ControllerBase
     {
+        Models.ResponseModel responseModel = new Models.ResponseModel();
+
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<ResponseModel> Get()
         {
-            return new string[] { "value1", "value2" };
+            responseModel = new Models.ResponseModel()
+            {
+                Message = "Ok",
+                AdditionalMessage = "If you see this, which essentially means your request was responded",
+                Status = true,
+                Data = new string[] { "value1", "value2" }
+            };
+
+            return responseModel;
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult<ResponseModel> Get(int id)
         {
-            return "value";
+            responseModel = new Models.ResponseModel()
+            {
+                Message = "Ok",
+                Status = true,
+                Data = "value"
+            };
+
+            return responseModel;
         }
 
         // POST api/values
